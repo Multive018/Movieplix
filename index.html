@@ -316,7 +316,7 @@ header a{
     z-index: 1000;
     width: 0%;
     height: 3px;
-    background-color: #f1683a;
+    background-color: #ff0000;
     left: 0;
     top: 0;
 }
@@ -654,33 +654,33 @@ header a{
         <div class="time"></div>
     </div>
 
-    <script>
-        //step 1: get DOM
-let nextDom = document.getElementById('next');
-let prevDom = document.getElementById('prev');
+  <script>
+    // get DOM
+    let nextDom = document.getElementById('next');
+    let prevDom = document.getElementById('prev');
 
-let carouselDom = document.querySelector('.carousel');
-let SliderDom = carouselDom.querySelector('.carousel .list');
-let thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
-let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
-let timeDom = document.querySelector('.carousel .time');
+    let carouselDom = document.querySelector('.carousel');
+    let SliderDom = carouselDom.querySelector('.carousel .list');
+    let thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
+    let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+    let timeDom = document.querySelector('.carousel .time');
 
-thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
-let timeRunning = 3000;
-let timeAutoNext = 7000;
+    thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+    let timeRunning = 3000;
+    let timeAutoNext = 7000;
 
-nextDom.onclick = function(){
-    showSlider('next');    
-}
+    nextDom.onclick = function(){
+      showSlider('next');    
+    }
 
-prevDom.onclick = function(){
-    showSlider('prev');    
-}
-let runTimeOut;
-let runNextAuto = setTimeout(() => {
-    next.click();
-}, timeAutoNext)
-function showSlider(type){
+    prevDom.onclick = function(){
+      showSlider('prev');    
+    }
+    let runTimeOut;
+    let runNextAuto = setTimeout(() => {
+      next.click();
+    }, timeAutoNext)
+    function showSlider(type){
     let  SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
     let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
     
@@ -703,7 +703,7 @@ function showSlider(type){
     runNextAuto = setTimeout(() => {
         next.click();
     }, timeAutoNext)
-}
-    </script>
+   }
+  </script>
 </body>
 </html>
