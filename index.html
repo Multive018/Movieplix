@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/0903571df0.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/305592fa75.js" crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -19,7 +19,7 @@ a{
 }
 header{
     width: 1440px;
-    max-width: 87%;
+    max-width: 90%;
     margin: auto;
     height: 50px;
     display: flex;
@@ -32,6 +32,41 @@ header a{
     margin-right: 40px;
     font-weight: 700;
 }
+/* socials */
+.social-link-bar {
+        position: fixed;
+        top: 40%;
+        right: -5px;
+        z-index: 5;
+        opacity: 70%;
+      }
+      .social-link-bar ul {
+        margin: 0;
+        padding: 10px 10px 10px 20px;
+      }
+
+      .social-link-bar ul li {
+        list-style-type: none;
+        padding: 10px;
+        user-select: none;
+      }
+
+      .social-link-bar ul a:hover {
+        color: #f8f5f5;
+      }
+      
+      .social-link-bar ul a,
+      .social-link-bar ul a:active {
+        color: #ff0000;
+      }
+
+      .social-link-bar .vertical-line {
+        height: 55px;
+        border-left: 1px solid #ff0000;
+        margin-left: 38px;
+      }
+      
+
 /* carousel */
 .carousel{
     height: 100vh;
@@ -370,14 +405,50 @@ header a{
 <body>
     <header>
         <nav>
-            <a href="">Home</a>
-            <a href="">Seasons</a>
-            <a href="">Contacts</a>
+            <a href="#">Home</a>
+            <a href="#seasons">Seasons</a>
+            <a href="#contacts">Contacts</a>
         </nav>
     </header>
+    <div class="social-link-bar" id="contacts">
+      <div class="vertical-line"></div>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/Multive018"
+            target="_blank"
+            title="Github profile"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/sharonmbeneka/"
+            target="_blank"
+            title="Linkedin profile"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+        </li>
+        <li>
+          <a href="https://twitter.com/grnglvr18" target="_blank" title="Telegram"
+          ><i class="fa-brands fa-twitter"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="mailto:sharonmbeneka8944@gmail.com"
+              target="_blank"
+              title="Email Elham"
+              ><i class="fa-regular fa-envelope"></i
+            ></a>
+          </li>
+      </ul>
+      <div class="vertical-line"></div>
+    </div>
+
 
     <!-- carousel -->
-    <div class="carousel">
+    <div class="carousel" >
         <!-- list item -->
         <div class="list">
             <div class="item">
@@ -503,6 +574,7 @@ header a{
             </div>
         </div>
         <!-- list thumnail -->
+        <div id="seasons"></div>
         <div class="thumbnail">
             <div class="item">
                 <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/912/original/p1.png?1707662511">
