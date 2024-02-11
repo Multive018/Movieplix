@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0903571df0.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+    margin: 20px;
+    background-color: #000;
+    color: #eee;
+    font-family: Poppins;
+    font-size: 12px;
+}
+a{
+    text-decoration: none;
+}
+header{
+    width: 1440px;
+    max-width: 87%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+header a{
+    color: #f8f5f5;
+    margin-right: 40px;
+    font-weight: 700;
+}
+/* carousel */
+.carousel{
+    height: 100vh;
+    margin-top: -10px;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.carousel .list .item{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.carousel .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel .list .item .content{
+    position: absolute;
+    top: 20%;
+    width: 1140px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    color: #fff;
+    text-shadow: 0 5px 10px #0004;
+}
+.carousel .producer{
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+.carousel .title, .carousel .topic{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.carousel .topic{
+    font-size: 24px;
+    color: #e80909;
+}
+.carousel .plot{
+    background: #3b3b3b;
+    padding: 10px;
+    border-radius: 20px;
+    opacity: 0.9;
+    margin-right: 30px;
+}
+.carousel .buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+}
+.carousel .buttons a{
+    color: #070000;
+}
+
+.carousel .buttons button{
+    border: none;
+    background-color: #f40808;
+    border-radius: 10px;
+    letter-spacing: 3px;
+    font-family: Poppins;
+    font-weight: 500;
+    margin-right: 10px;
+}
+.carousel button:hover{
+    transition: all 200ms ease-in-out;
+    transform: scale(0.9);
+    cursor: pointer;
+}
+/* thumbail */
+.thumbnail{
+    position: absolute;
+    bottom: -10px;
+    left: 55%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+    opacity: 0.8;
+}
+.thumbnail .item{
+    width: 150px;
+    height: 200px;
+    flex-shrink: 0;
+    position: relative;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.thumbnail .item .content{
+    color: #fff;
+    background: #e80909;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 9px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+.thumbnail .item .content .title{
+    font-size: 14px;
+    font-weight: 500;
+}
+.thumbnail .item .content .description{
+    font-weight: 300;
+}
+/* arrows */
+.arrows{
+    position: absolute;
+    top: 80%;
+    right: 40%;
+    z-index: 100;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    align-items: center;
+}
+.arrows button{
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: red;
+    border: none;
+    color: rgb(5, 0, 0);
+    font-family: monospace;
+    font-weight: bold;
+    transition: all 200ms ease-in-out;
+}
+.arrows button:hover{
+    background-color: #fff;
+    color: #000;
+}
+#prev{
+    right: unset;
+    left: -40px;
+}
+#next{
+    left: unset;
+    right: 100px;
+}
+
+/* animation */
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+
+/* animation text in first item */
+
+.carousel .list .item:nth-child(1) .content .author,
+.carousel .list .item:nth-child(1) .content .title,
+.carousel .list .item:nth-child(1) .content .topic,
+.carousel .list .item:nth-child(1) .content .des,
+.carousel .list .item:nth-child(1) .content .buttons
+{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s 1s linear 1 forwards;
+}
+@keyframes showContent{
+    to{
+        transform: translateY(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+.carousel .list .item:nth-child(1) .content .title{
+    animation-delay: 1.2s!important;
+}
+.carousel .list .item:nth-child(1) .content .topic{
+    animation-delay: 1.4s!important;
+}
+.carousel .list .item:nth-child(1) .content .des{
+    animation-delay: 1.6s!important;
+}
+.carousel .list .item:nth-child(1) .content .buttons{
+    animation-delay: 1.8s!important;
+}
+/* create animation when next click */
+.carousel.next .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage .5s linear 1 forwards;
+}
+@keyframes showImage{
+    to{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.carousel.next .thumbnail .item:nth-last-child(1){
+    overflow: hidden;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.prev .list .item img{
+    z-index: 100;
+}
+@keyframes showThumbnail{
+    from{
+        width: 0;
+        opacity: 0;
+    }
+}
+.carousel.next .thumbnail{
+    animation: effectNext .5s linear 1 forwards;
+}
+
+@keyframes effectNext{
+    from{
+        transform: translateX(150px);
+    }
+}
+
+/* running time */
+
+.carousel .time{
+    position: absolute;
+    z-index: 1000;
+    width: 0%;
+    height: 3px;
+    background-color: #f1683a;
+    left: 0;
+    top: 0;
+}
+
+.carousel.next .time,
+.carousel.prev .time{
+    animation: runningTime 3s linear 1 forwards;
+}
+@keyframes runningTime{
+    from{ width: 100%}
+    to{width: 0}
+}
+
+
+/* prev click */
+
+.carousel.prev .list .item:nth-child(2){
+    z-index: 2;
+}
+
+.carousel.prev .list .item:nth-child(2) img{
+    animation: outFrame 0.5s linear 1 forwards;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@keyframes outFrame{
+    to{
+        width: 150px;
+        height: 220px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 20px;
+    }
+}
+
+.carousel.prev .thumbnail .item:nth-child(1){
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.next .arrows button,
+.carousel.prev .arrows button{
+    pointer-events: none;
+}
+.carousel.prev .list .item:nth-child(2) .content .author,
+.carousel.prev .list .item:nth-child(2) .content .title,
+.carousel.prev .list .item:nth-child(2) .content .topic,
+.carousel.prev .list .item:nth-child(2) .content .des,
+.carousel.prev .list .item:nth-child(2) .content .buttons
+{
+    animation: contentOut 1.5s linear 1 forwards!important;
+}
+
+@keyframes contentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 700px) {
+    .carousel .item{
+        margin-top: -90px;
+    }
+    .carousel .list .item .content{
+        padding-right: 0;
+    }
+    .carousel .content .title{
+        font-size: 28px;
+    }
+    .arrows button{
+        position: absolute;
+        bottom: -100px;
+    }
+    #prev{
+        right: unset;
+        left: -80px;
+    }
+    #next{
+        left: unset;
+        right: 80px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="">Home</a>
+            <a href="">Seasons</a>
+            <a href="">Contacts</a>
+        </nav>
+    </header>
+
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/924/original/wp9553197.png?1707668717">
+                <div class="content">
+                    <div class="producer">ABC</div>
+                    <div class="title">HOW TO GET AWAY WITH MURDER</div>
+                    <div class="title">
+                        Season 1
+                    </div>
+                    <div class="plot">
+                        <div class="topic">
+                            EP 1 : "PILOT"
+                        </div>
+                        <div class="des">
+                            Annalise challenges her students to solve some of the most difficult criminal cases, and selects a group of the smartest students to come work for her. Meanwhile, in flash-forwards, we learn that a group of four students, Wes, Connor, Michaela and Laurel get involved in their own murder mystery cover up.
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://ww8.soap2dayhd.co/film/how-to-get-away-with-murder-season-1-1540/" target="_blank"><i class="fa-solid fa-play"></i> Watch </a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/924/original/wp9553197.png?1707668717">
+                <div class="content">
+                    <div class="producer">ABC</div>
+                    <div class="title">
+                        Season 2
+                    </div>
+                    <div class="plot">
+                        <div class="topic">
+                            EP 1 : "It's Time To Move On"
+                        </div>
+                        <div class="des">
+                            Annalise and her students must move on with their lives as though nothing has happened, but the students are still reeling over Rebecca's disappearance. Only Annalise and Frank know that Rebecca was murdered and the two are determined to find out who killed her. Meanwhile, Annalise decides she wants to take on a new client, a brother and sister who are accused of killing their parents, and an old friend surprises Annalise at home and teaches her a valuable lesson.
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://ww8.soap2dayhd.co/film/how-to-get-away-with-murder-season-2-5595/" target="_blank"><i class="fa-solid fa-play"></i> Watch </a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/924/original/wp9553197.png?1707668717">
+                <div class="content">
+                    <div class="producer">ABC</div>
+                    <div class="title">
+                        Season 3
+                    </div>
+                    <div class="plot">
+                        <div class="topic">
+                            EP 1 : "We're Good People Now"
+                        </div>
+                        <div class="des">
+                            With Wallace Mahoney's murder unsolved and Frank's whereabouts unknown, the "Keating 5" struggle to move on with their lives as they enter into their second year of law school. Meanwhile, Annalise's reputation at Middleton University is on the line, so she creates a criminal law clinic where the students will compete to try their own pro bono cases. Annalise also wrestles with a decision involving Frank that could change everything.
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://ww8.soap2dayhd.co/film/how-to-get-away-with-murder-season-3-16559/" target="_blank"><i class="fa-solid fa-play"></i> Watch </a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/924/original/wp9553197.png?1707668717">
+                <div class="content">
+                    <div class="producer">ABC</div>
+                    <div class="title">
+                        Season 4
+                    </div>
+                    <div class="plot">
+                        <div class="topic">
+                            EP 1 : "I'm Going Away"
+                        </div>
+                        <div class="des">
+                            In the wake of Wes’ tragic death, Annalise returns to her family home to pick up the pieces of her shattered life, and realizes that, in order to rebuild, she must make a tough and shocking decision. Meanwhile, “the Keating 4” all face an uncertain future while Laurel becomes obsessed with finding out what actually happened to Wes the night he died. In a flash-forward, a terrifying crime is committed and everyone is a suspect.
+                        </div>          
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://ww8.soap2dayhd.co/film/how-to-get-away-with-murder-season-4-22028/" target="_blank"><i class="fa-solid fa-play"></i> Watch </a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/924/original/wp9553197.png?1707668717">
+                <div class="content">
+                    <div class="producer">ABC</div>
+                    <div class="title">
+                        Season 5
+                    </div>
+                    <div class="plot">
+                        <div class="topic">
+                            EP 1 : "Your Funeral"
+                        </div>
+                        <div class="des">
+                            Annalise selects students for her new legal clinic at Middleton and juggles job offers from competing firms, all while the Keating 4 attempt to move on from last semester’s turmoil. And in a startling flash-forward, a new mystery is introduced and it shakes things up for everyone.
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://ww8.soap2dayhd.co/film/how-to-get-away-with-murder-season-5-26314/" target="_blank"><i class="fa-solid fa-play"></i> Watch </a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/924/original/wp9553197.png?1707668717">
+                <div class="content">
+                    <div class="producer">ABC</div>
+                    <div class="title">
+                        Season 6
+                    </div>
+                    <div class="plot">
+                        <div class="topic">
+                            EP 1 : "Say Goodbye"
+                        </div>
+                        <div class="des">
+                            Annalise struggles with the personal toll that Laurel and Christopher's disappearance has taken on everyone. Meanwhile, the remaining Keating 4, Oliver, Frank and Bonnie disagree on the possible reasons behind Laurel's disappearance. Tegan handles the aftermath of Emmett's apparent poisoning, and Gabriel wants to take his budding relationship with Michaela to the next level.
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://ww8.soap2dayhd.co/film/How-to-Get-Away-with-Murder-6-100049/" target="_blank"><i class="fa-solid fa-play"></i> Watch </a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/912/original/p1.png?1707662511">
+                <div class="content">
+                    <div class="title">
+                        Season 1
+                    </div>
+                    <div class="description">
+                        15 Episodes
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/609/original/2Poster1.jpg?1707483762">
+                <div class="content">
+                    <div class="title">
+                        Season 2
+                    </div>
+                    <div class="description">
+                        15 Episodes
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/610/original/3Poster1.jpg?1707483774">
+                <div class="content">
+                    <div class="title">
+                        Season 3
+                    </div>
+                    <div class="description">
+                        15 Episodes
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/611/original/4Poster2.jpg?1707483787">
+                <div class="content">
+                    <div class="title">
+                        Season 4
+                    </div>
+                    <div class="description">
+                        15 Episodes
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/613/original/5Poster4.jpg?1707483811">
+                <div class="content">
+                    <div class="title">
+                        Season 5
+                    </div>
+                    <div class="description">
+                        15 Episodes
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/614/original/6Poster1.jpg?1707483829">
+                <div class="content">
+                    <div class="title">
+                        Season 6
+                    </div>
+                    <div class="description">
+                        15 Episodes
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- arrows -->
+
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+
+    <script>
+        //step 1: get DOM
+let nextDom = document.getElementById('next');
+let prevDom = document.getElementById('prev');
+
+let carouselDom = document.querySelector('.carousel');
+let SliderDom = carouselDom.querySelector('.carousel .list');
+let thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
+let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+let timeDom = document.querySelector('.carousel .time');
+
+thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+let timeRunning = 3000;
+let timeAutoNext = 7000;
+
+nextDom.onclick = function(){
+    showSlider('next');    
+}
+
+prevDom.onclick = function(){
+    showSlider('prev');    
+}
+let runTimeOut;
+let runNextAuto = setTimeout(() => {
+    next.click();
+}, timeAutoNext)
+function showSlider(type){
+    let  SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
+    let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
+    
+    if(type === 'next'){
+        SliderDom.appendChild(SliderItemsDom[0]);
+        thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+        carouselDom.classList.add('next');
+    }else{
+        SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+        thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
+        carouselDom.classList.add('prev');
+    }
+    clearTimeout(runTimeOut);
+    runTimeOut = setTimeout(() => {
+        carouselDom.classList.remove('next');
+        carouselDom.classList.remove('prev');
+    }, timeRunning);
+
+    clearTimeout(runNextAuto);
+    runNextAuto = setTimeout(() => {
+        next.click();
+    }, timeAutoNext)
+}
+    </script>
+</body>
+</html>
